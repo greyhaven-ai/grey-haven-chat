@@ -98,6 +98,7 @@ export async function POST(request: NextRequest) {
     const llm = new Anthropic({
       model: (process.env.MODEL as any) ?? "claude-3-sonnet",
       temperature: 0.6,
+      maxTokens: 512,
     });
 
     const chatEngine = await createChatEngine(llm);
