@@ -15,15 +15,19 @@ const exampleQuestions = [
 
 export const QuestionButtons: React.FC<QuestionButtonsProps> = ({ onQuestionClick, onButtonsHidden }) => {
   const [showButtons, setShowButtons] = useState(true);
-  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+  const [viewportWidth, setViewportWidth] = useState(0);
 
   useEffect(() => {
-    const handleResize = () => {
+    if (typeof window !== 'undefined') {
       setViewportWidth(window.innerWidth);
-    };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+      const handleResize = () => {
+        setViewportWidth(window.innerWidth);
+      };
+
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
   }, []);
 
   const handleQuestionClick = (question: string) => {
