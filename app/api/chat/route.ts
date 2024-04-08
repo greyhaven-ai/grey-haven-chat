@@ -28,7 +28,7 @@ const unkey = new Ratelimit({
   duration: "720m", 
   async: true,
   timeout: {
-    ms: 3000, // Wait up to 3 seconds for a response from the rate limiting service
+    ms: 1000, // Wait up to 1 seconds for a response from the rate limiting service
     fallback: fallbackResponse, // Use the fallback response if the timeout is reached
   },
   onError: (err) => {
