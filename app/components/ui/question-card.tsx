@@ -15,7 +15,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
       <CardHeader className="text-center text-2xl">
         <CardTitle>Learn about Grey Haven AI</CardTitle>
         <CardDescription>
-          Select a question from the following suggestions or ask your own.
+          Select from the following suggestions or ask your own.
         </CardDescription>
       </CardHeader>
       <CardContent className="p-10 max-h-72 overflow-y-auto">

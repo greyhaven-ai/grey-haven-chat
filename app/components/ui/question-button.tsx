@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from './button';
 
 interface QuestionButtonsProps {
@@ -15,6 +15,16 @@ const exampleQuestions = [
 
 export const QuestionButtons: React.FC<QuestionButtonsProps> = ({ onQuestionClick, onButtonsHidden }) => {
   const [showButtons, setShowButtons] = useState(true);
+  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleQuestionClick = (question: string) => {
     const inputField = document.querySelector('input[name="message"]') as HTMLInputElement;
@@ -41,13 +51,13 @@ export const QuestionButtons: React.FC<QuestionButtonsProps> = ({ onQuestionClic
   }
 
   return (
-    <div className="grid grid-cols-2 gap-y-4 gap-x-4">
-      {exampleQuestions.map((question, index) => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-4 sm:mx-auto">
+      {exampleQuestions.slice(0, viewportWidth >= 768 ? 4 : 2).map((question, index) => (
         <Button
           key={index}
           onClick={() => handleQuestionClick(question)}
           variant="outline"
-          className="text-left whitespace-normal max-w-xs p-4 text-sm min-h-[6rem] sm:max-w-[25rem]"
+          className="text-left whitespace-normal max-w-xs p-4 text-sm min-h-[6rem] mx-auto w-full"
         >
           {question}
         </Button>
