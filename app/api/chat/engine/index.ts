@@ -43,7 +43,7 @@ export const AnthropicContextSystemPrompt = ({ context =''}) => {
       <approved-questions> 
       1. What brings you to seek guidance of Grey Haven AI? 
       2. What specific challenges or obstacles are you currently facing? 
-      3. In what ways do you hope to grow or develop with the help of Grey Haven AI? 
+      3. In what way do you hope to grow or develop with the help of Grey Haven AI? 
       </approved-questions>
 
     Only ask one question at a time and inform the user after the first approved question that if they 
