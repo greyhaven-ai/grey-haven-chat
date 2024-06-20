@@ -96,7 +96,7 @@ export async function POST(request: NextRequest) {
     });
 
     const llm = new Anthropic({
-      model: (process.env.MODEL as any) ?? "claude-3-sonnet",
+      model: (process.env.MODEL as any) ?? "claude-3-5-sonnet-20240620",
       temperature: 0.6,
       maxTokens: 512,
     });
